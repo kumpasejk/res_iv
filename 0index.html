@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipino Sign Language</title>
+    <link rel="stylesheet" href="0style.css">
+</head>
+<body>
+    <header>
+        <h1>Filipino Sign Language</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="1get-started.html">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>Learn and Detect Filipino Sign Language</h2>
+        <p>Empowering communication through technology.</p>
+        <a href="1get-started.html" class="btn">Get Started</a>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>Filipino Sign Language (FSL) is the national sign language of the Philippines.</p>
+    </section>
+
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li>Learn Filipino Sign Language</li>
+            <li>Live Sign Language Detection</li>
+            <li>Chat with Sign Language</li>
+        </ul>
+    </section>
+
+    <section id="live-detection">
+        <h2>Live Sign Language Detection</h2>
+        <p>Enable your camera to detect Filipino Sign Language in real-time.</p>
+        <img id="video_feed" width="640" height="480" alt="Live Video Stream">
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: contact@fslproject.com</p>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://127.0.0.1:5000');
+
+        socket.on('video_frame', function(data) {
+            document.getElementById('video_feed').src = 'data:image/jpeg;base64,' + data.frame;
+        });
+    </script>
+</body>
+</html>
